@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 32px;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+main {
+    border-bottom: 1px solid #ccc;
+}
+
+footer {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+p {
+    font-size: 200%;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    height: 200px;
+}
+
+ul {
+    padding: 20px;
+    border-top: 1px solid #000000;
+    border: outset;
+    border-radius: 10px;
+    background-color: gold;
+    display: table;
+    /* 定義 */
+    table-layout: fixed;
+    width: 90%;
+    margin: 80px 200px;
+}
+
+li {
+    text-align: center;
+    font-size: 60px;
+    list-style-type: none;
+    border: 1px solid #666;
+    background-color: #FFF;
+    display: table-cell;
+    /* 定義 */
+    cursor: pointer;
+}
+
+li:hover {
+    background: #0066CC;
+    color: #fff;
+}
+
+.t3picts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+img {
+    margin: 80px;
+    border: 60px ridge;
+    width: 600px;
+    background-color: brown;
+}
+
+.daioteha {
+    font-style: italic;
+    font-size: 60px;
+}
+
+#judgement_02 {
+    margin: 80px;
+    padding: 30px;
+    width: 50px;
+}
+
+#judgement {
+    width: 95%;
+    margin: 100px;
+    font-size: 80px;
+    background-color: orange;
+}
+
+#mou1do_btn {
+    margin-left: 50px;
+    padding: 20px;
+}
+/* End of the code */
