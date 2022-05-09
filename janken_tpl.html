@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <link rel="stylesheet" href="css/sample.css">
+  <title>janken_title</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>＜じゃんけん大王に挑戦！＞</h1>
+  </header>
+
+  <main>
+    <li id="mou1do_btn">もう一回？<br> →「読み込み（左上の円矢印）」してね。</li>
+
+    <ul>
+      <li id="gu_btn">グー</li>
+      <li id="cho_btn">チョキ</li>
+      <li id="par_btn">パー</li>
+    </ul>
+
+    <!-- gu/choki/par gazou-->
+    <div class="t3picts">
+      <img class="pict_01" src="img/l1.png" alt="gu_01 no e">
+      <img class="pict_02" src="img/l2.png" alt="choki_02 no e">
+      <img class="pict_03" src="img/l3.png" alt="par_03 no e">
+    </div>
+
+    <div class="daioteha">じゃんけん大王の出した手は？「<span id="pc_hands501">（大王の手）なに？（ぐーちょきぱーが出ます）</span>」</div>
+    <div id="judgment_02">
+      <p id="judgement">勝負のゆくえは<br>???</p>
+    </div>
+
+
+  </main>
+
+  <footer></footer>
+
+  <script>
+    //じゃんけん用のSCRIPTを書いてください
+
+    alert('＜じゃんけん＞　しませんか。')
+
+    //  anata:let yute suuji wo teigi(sengen)
+    let yute = Number;
+
+    //gu choki par click sitara alert; and iro kawaru
+    // <REMARK> 3 tuwo haita tekini suru waza >>fadeOut tukau
+
+    alert('グー、チョキ、パーのどれかを選んでください。')
+
+    // saisho mou1kai btn mienaiyouni(hide de kakusu)
+    $('#mou1do_btn').hide();
+
+    // CASE<1> anata:GU
+    $('#gu_btn').on('click', function () {
+      //gu wo alert hyooji 
+      alert('グー　ですね');
+      $('#gu_btn').html('あなたの手は「グー」');
+      $('#gu_btn').css('color', 'blue');
+      $('#gu_btn').css('font-size', '80px');
+      $('#gu_btn').css('background', '#66ffcc');
+      $('.pict_02').hide(2000);
+      $('.pict_03').hide(4500);
+
+      // yute G=1 to sadameru;
+      // tabun kiite nai..$('#yute').html(yute = 1);
+      $('#yute').html(console.log('yute=1'));
+
+      //  DAIO ga jyanken/te wo cosole.log ni kaku
+      let pc_hands = Math.ceil(Math.random() * 3);
+      $('#pc_hands').html(console.log('DAIO no te wa' + '  ' + pc_hands))
+
+      // if bunki by DAIO no te niyori
+      // CASE 1-(1) PL:g/DAI:g
+      if (pc_hands == 1) {
+        //  daio no te 'html' ni kaku
+        //<Remark> fadeIn dekinai;
+        $('#pc_hands501').fadeIn(5000);
+        $('#pc_hands501').text('大王は、ぐー');
+        $('#pc_hands501').css('font-size', '80px');
+        // hantei
+        console.log('hikiwake(PLYR:G/PC:G)');
+        document.getElementById('judgement').innerText = 'あなた：グー、大王：ぐーで引き分け';
+        $('#judgement').css('background-color', 'yellow');
+      }
+      // CASE 1-(2) PL:g/DAI:c
+      else if (pc_hands == 2) {
+        //  daio no te;
+        //<Remark> fadeIn dekinai 
+        $('#pc_hands501').fadeIn(5000);
+        $('#pc_hands501').text('大王はちょき');
+        $('#pc_hands501').css('font-size', '80px');
+        // hantei;
+        console.log('anata no kachi(PLYR:G/PC:C)');
+        document.getElementById('judgement').innerText = 'あなた：グー、大王：ちょきで、「あなたの勝ち！」';
+        $('#judgement').css('background-color', '#33ff00');
+      }
+
+      // CASE 1-(3) PL:g/DAI:p
+      else {
+        //  daio no te
+        $('#pc_hands501').fadeIn(5000);
+        $('#pc_hands501').text('大王は、ぱー');
+        $('#pc_hands501').css('font-size', '80px');
+        // hantei;
+        console.log('DAIO no kachi(PLYR:G/PC:P)');
+        document.getElementById('judgement').innerText = 'あなた：グー、大王：ぱーで　大王の勝ち';
+        $('#judgement').css('background-color', 'red');
+      }
+
+      // botan kieru 3 dankai
+      // <Remark> confirm btn kikanai if bunki ==false?
+      confirm('じゃんけんサンキュー！→ 勝負のゆくえは？');
+      // kesiteoku...>>$('#gu_btn').fadeOut(3500);
+      $('#cho_btn').fadeOut(3000);
+      $('#par_btn').fadeOut(5000);
+
+      // mou1kai btn deruyouni
+      $('#mou1do_btn').show(7500);
+      $('#mou1do_btn').css('font-size', '50px');
+      $('#mou1do_btn').css('font-weight', 'bold');
+      $('#mou1do_btn').css('color', 'blue');
+      $('#mou1do_btn').css('background', 'orange');
+
+      // mou1do_btn >> reload;
+      // <Remark> mikan
+      /*$('#mou1do_btn').on('click', function(){
+      location.reload(janken_tpl.html);         
+      })*/
+
+      //<CASE 1> osimai 
+    });
+
+    // CASE<2> anata:CHOKI
+    $('#cho_btn').on('click', function () {
+      // choki wo alert hyooji
+      alert('チョキ　ですね');
+      $('#cho_btn').html('あなたの手は「チョキ」');
+      $('#cho_btn').css('color', 'red');
+      $('#cho_btn').css('font-size', '80px');
+      $('#cho_btn').css('background-color', '#6666cc');
+      $('.pict_03').hide(2000);
+      $('.pict_01').hide(4500);
+
+      // yute C=2 to sadameru;
+      // $('#yute').html(yute = 2);
+      $('#yute').html(console.log('yute=2'));
+
+      //  DAIO ga jyanken/te wo cosole.log ni kaku
+      let pc_hands = Math.ceil(Math.random() * 3);
+      $('#pc_hands').html(console.log('DAIO no te wa' + '  ' + pc_hands));
+
+      // if bunki
+      // CASE 2-(1) PL:c/DAI:c
+      if (pc_hands == 2) {
+        //  daio no te;
+        $('#pc_hands501').text('大王は、ちょき　です');
+        $('#pc_hands501').css('font-size', '80px');
+        // hantei;
+        console.log('hikiwake(PLYR:C/PC:C)');
+        document.getElementById('judgement').innerText = 'あなた：チョキ　大王：ちょきで引き分け。';
+        $('#judgement').css('background-color', 'yellow');
+      }
+
+      // CASE 2-(2) PL:c/DAI:p
+      else if (pc_hands == 3) {
+        //  daio no te;
+        $('#pc_hands501').text('大王は、ぱー　です');
+        $('#pc_hands501').css('font-size', '80px');
+        // hantei;
+        console.log('anata no kachi(PLYR:C/PC:P)');
+        document.getElementById('judgement').innerText = 'あなた：チョキ　大王：ぱー　あなたの勝ち！';
+        $('#judgement').css('background-color', '#33ff00');
+
+      }
+      // CASE 2-(3) PL:c/DAI:g
+      else {
+        //  daio no te;
+        $('#pc_hands501').text('大王は　ぐー　です');
+        $('#pc_hands501').css('font-size', '80px');
+        // hantei;    
+        console.log('DAIO no kachi(PLYR:C/PC:G)');
+        document.getElementById('judgement').innerText = 'あなた：ちょき　大王：ぐーで　大王の勝ち。';
+        $('#judgement').css('background-color', 'red');
+      }
+      // botan kieru 3 dankai
+      confirm('じゃんけんサンキュー！→ 勝負のゆくえは？');
+      //  cho btn nokosu
+      // $('#cho_btn').fadeOut(3500);
+      $('#par_btn').fadeOut(3000);
+      $('#gu_btn').fadeOut(5000);
+
+      // mou1kai btn deruyouni
+      // onclick  sitara sai-yomikomi >>..mikan
+      $('#mou1do_btn').show(7500);
+      $('#mou1do_btn').css('font-size', '50px');
+      $('#mou1do_btn').css('font-weight', 'bold');
+      $('#mou1do_btn').css('color', 'blue');
+      $('#mou1do_btn').css('background', 'orange');
+
+      //<CASE 2> osimai
+    });
+
+    // CASE<3> PAR no toki
+    $('#par_btn').on('click', function () {
+      // par wo alert hyooji
+      alert('パー　ですね');
+      $('#par_btn').html('あなたの手は「パー」');
+      $('#par_btn').css('color', 'green');
+      $('#par_btn').css('font-size', '80px');
+      $('#par_btn').css('background-color', '#ff6699');
+      $('.pict_01').hide(2000);
+      $('.pict_02').hide(4500);
+
+      // yute P=3 to sadameru;
+      // $('#yute').html(yute = 3);
+      $('#yute').html(console.log('yute=3'));
+
+      //  DAIO ga jyanken/te wo cosole.log ni kaku
+      let pc_hands = Math.ceil(Math.random() * 3);
+      $('#pc_hands').html(console.log('DAIO no te wa' + '  ' + pc_hands))
+
+      // if bunki
+      // CASE 3-(1) PL:p/DAI:p
+      if (pc_hands == 3) {
+        //  daio no te;
+        $('#pc_hands501').text('大王　ぱー');
+        $('#pc_hands501').css('font-size', '80px');
+
+        // hantei
+        console.log('hikiwake dereba OK(PLYR:P/PC:P)');
+        document.getElementById('judgement').innerText = 'あなた：パー　大王：ぱーで引き分け。';
+        $('#judgement').css('background-color', 'yellow');
+
+      }
+      // CASE 3-(2) PL:p/DAI:g
+      else if (pc_hands == 1) {
+        //  daio no te;
+        $('#pc_hands501').text('大王　ぐー');
+        $('#pc_hands501').css('font-size', '80px');
+
+        // hantei
+        console.log('anata no kachi dereba OK(PLYR:P/PC:G)');
+        document.getElementById('judgement').innerText = 'あなた：パー　大王：ぐーで　あなたの勝ち！';
+        $('#judgement').css('background-color', '#33ff00');
+
+      }
+      // CASE 3-(3) PL:p/DAI:c
+      else {
+        //  daio no te;
+        $('#pc_hands501').text('大王　ちょき');
+        $('#pc_hands501').css('font-size', '80px');
+
+        // hantei
+        console.log('DAIO no kachi derea OK(PLYR:P/PC:C)');
+        document.getElementById('judgement').innerText = 'あなた：ぱー　大王：ちょきで　大王の勝ち。';
+        $('#judgement').css('background-color', 'red');
+
+      }
+      // botan kieru 3 dankai
+      confirm('じゃんけんサンキュー！→ 勝負のゆくえは？');
+      // par btn noosu
+      // $('#par_btn').fadeOut(3500);
+      $('#gu_btn').fadeOut(3000);
+      $('#cho_btn').fadeOut(5000);
+
+      // mou1kai btn deruyouni
+      // <Remark> TO DO click sitara sai-yomikomi sasetai
+      // <situmon>fadeIn show tigai ha nani?
+      $('#mou1do_btn').fadeIn(7500);
+      $('#mou1do_btn').css('font-size', '50px');
+      $('#mou1do_btn').css('font-weight', 'bold');
+      $('#mou1do_btn').css('color', 'blue');
+      $('#mou1do_btn').css('background', 'orange');
+
+      // <CASE 3> osimai
+    });
+
+      // kaisuu kiroku>>mikan
+      // kachi_make no kiroku>>mikan
+  </script>
+</body>
+
+</html>
